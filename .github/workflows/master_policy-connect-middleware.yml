@@ -24,9 +24,6 @@ jobs:
         with:
           dotnet-version: '3.1.301'
           include-prerelease: true
-      
-      - name: Restore
-        run: dotnet restore ${{env.DOTNET_ROOT}}/src
         
       - name: Build with dotnet
         run: dotnet build ${{env.DOTNET_ROOT}}/src --configuration Release
