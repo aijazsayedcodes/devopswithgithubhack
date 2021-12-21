@@ -23,10 +23,10 @@ jobs:
           include-prerelease: true
           
       - name: Create sln
-        run: dotnet new src/Contoso.WebApi sln -o WebApi.sln
+        run: dotnet new sln -o src/Contoso.WebApi
         
       - name: Add csproj inside sln
-        run: dotnet sln src/Contoso.WebApi/WebApi.sln add src/Contoso.WebApi/Contoso.WebApi.csproj
+        run: dotnet sln src/Contoso.WebApi/Contoso.WebApi.sln add src/Contoso.WebApi/Contoso.WebApi.csproj
 
       - name: Build with dotnet
         run: dotnet build src/Contoso.WebApi/ --configuration Release
