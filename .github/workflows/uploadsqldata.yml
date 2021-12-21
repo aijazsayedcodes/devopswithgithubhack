@@ -1,0 +1,30 @@
+name: Sql database update
+
+on:
+  push:
+    branches:
+      - master
+env:
+  AZURE_SQL_SERVERNAME: devopshackserver.database.windows.net
+
+jobs:
+  sqldbupdate:
+    
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.ACTIONSDEPLOY }}
+
+     
+    - uses: azure/sql-action@v1
+      with:
+       server-name: ${{ env.AZURE_SQL_SERVERNAME }}
+       connection-string: ${{ secrets.SQLCONNECTIONSTRING }}
+       dacpac-package: './databasebackup/contosodatabase.dacpac'
+
+    # Azure logout 
+    - name: logout
+      run: |
+        az logout 
