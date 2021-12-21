@@ -21,12 +21,18 @@ jobs:
         with:
           dotnet-version: '3.1.301'
           include-prerelease: true
+          
+      - name: Create sln
+        run: dotnet new src/Contoso.WebApi sln -o WebApi.sln
+        
+      - name: Add csproj inside sln
+        run: dotnet sln src/Contoso.WebApi/WebApi.sln add src/Contoso.WebApi/Contoso.WebApi.csproj
 
       - name: Build with dotnet
-        run: dotnet build src/ --configuration Release
+        run: dotnet build src/Contoso.WebApi/ --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish src/ -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish src/Contoso.WebApi/ -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
