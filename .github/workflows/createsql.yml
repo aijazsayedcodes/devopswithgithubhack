@@ -2,8 +2,8 @@ name: Sql database automation
 
 on:
   push:
-#     branches:
-#       - master
+    branches:
+      - master
 
 env:
   AZURE_RESOURCE_GROUP: devops-hack             # set this to your Azure Resource group's name  
