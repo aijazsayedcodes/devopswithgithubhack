@@ -2,8 +2,8 @@ name: Sql database update
 
 on:
   push:
-    branches:
-      - master
+#     branches:
+#       - master
 env:
   AZURE_SQL_SERVERNAME: devopshackserver.database.windows.net
 
